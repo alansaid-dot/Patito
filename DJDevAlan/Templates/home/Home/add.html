@@ -1,0 +1,10 @@
+<h2>Probando CreateView</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+
+<label for="">Prueba</label>
+<input type="text" placeholder="Ingrese texto aquí">
