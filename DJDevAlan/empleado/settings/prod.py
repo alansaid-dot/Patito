@@ -13,7 +13,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 if not SECRET_KEY:
     raise Exception("SECRET_KEY no está definida en las variables de entorno")
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
     'mi-sitio-web-de-render.onrender.com'
 ]
