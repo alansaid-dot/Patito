@@ -20,8 +20,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #Apps Terceros
     'ckeditor',
-    'empleado',
+    #apps locales
+    'applications.departamento',
+    'applications.Persona',
+    'applications.home'
 ]
 
 # CORRIGE ESTOS MIDDLEWARES (ORDEN ES IMPORTANTE)
