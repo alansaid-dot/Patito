@@ -6,7 +6,7 @@ app_name="persona_app"
 urlpatterns = [
     path(
         '', 
-        views.InicioView.as_view(),
+        views.debug_view,
         name='inicio'
     ),
     path('Listar-todos-empleados/', views.LisAllEmpleados.as_view(), name='empleados_all'),
