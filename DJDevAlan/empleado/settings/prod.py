@@ -36,7 +36,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'DJDevAlan.urls'
+ROOT_URLCONF = 'empleado.urls'
 
 TEMPLATES = [
     {
@@ -54,7 +54,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DJDevAlan.wsgi.application'
+WSGI_APPLICATION = 'empleado.wsgi.application'
 
 # DATABASE
 DATABASE_URL = os.environ.get('DATABASE_URL')
