@@ -19,12 +19,14 @@ from django.urls import path, include
 from applications.Persona.views import LisAllEmpleados
 from django.conf.urls.static import static
 from django.conf import settings
+from applications.Persona.views import debug_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('applications.home.urls')),
     path('', include('applications.Persona.urls')),
     path('', include('applications.departamento.urls')),
+    path('', debug_view), 
     #path('listar-todos-empleados/', LisAllEmpleados.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
