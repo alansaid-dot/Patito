@@ -8,7 +8,7 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
-SECRET_KEY = os.environ.get('SECRET_KEY',)
+SECRET_KEY = os.environ.get('SECRET_KEY', 'clave-secreta')
 
 if not SECRET_KEY:
     raise Exception("SECRET_KEY no está definida en las variables de entorno")
@@ -16,6 +16,8 @@ if not SECRET_KEY:
 DEBUG = True
 ALLOWED_HOSTS = [
     'mi-sitio-web-de-render.onrender.com',
+    '127.0.0.1:8000',
+    '127.0.0.1',
 ]
 
 # APPLICATION DEFINITION
@@ -104,3 +106,6 @@ STATICFILES_DIRS=[BASE_DIR.parent / 'static']
 MEDIA_URL='/media/'
 #MEDIA_ROOT=BASE_DIR.child('media')
 MEDIA_ROOT=BASE_DIR / 'media'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
