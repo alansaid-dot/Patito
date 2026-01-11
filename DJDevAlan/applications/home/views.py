@@ -5,10 +5,6 @@ from .models import Prueba
 from .models import Prueba
 
 from .forms import PruebaForm
-from django.http import HttpResponse
-
-def test_ok(request):
-    return HttpResponse("Render está funcionando 🚀")
 
 class indexView(TemplateView):
     template_name = 'home/Home/home.html'
