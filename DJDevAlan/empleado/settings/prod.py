@@ -16,8 +16,6 @@ if not SECRET_KEY:
 DEBUG = True
 ALLOWED_HOSTS = [
     'mi-sitio-web-de-render.onrender.com',
-    '127.0.0.1:8000',
-    '127.0.0.1',
 ]
 
 # APPLICATION DEFINITION
