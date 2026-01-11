@@ -8,14 +8,16 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY',)
 
 if not SECRET_KEY:
     raise Exception("SECRET_KEY no está definida en las variables de entorno")
 
 DEBUG = True
 ALLOWED_HOSTS = [
-    'mi-sitio-web-de-render.onrender.com'
+    'mi-sitio-web-de-render.onrender.com',
+    '127.0.0.1:8000',
+    '127.0.0.1',
 ]
 
 # APPLICATION DEFINITION
@@ -34,7 +36,6 @@ INSTALLED_APPS = [
     'applications.home'
 ]
 
-# CORRIGE ESTOS MIDDLEWARES (ORDEN ES IMPORTANTE)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -99,17 +100,9 @@ TIME_ZONE = 'America/Mexico_City'
 USE_I18N = True
 USE_TZ = True
 
-# STATIC FILES
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS=[BASE_DIR.parent / 'static']
 
-# REMUEVE ESTA LÍNEA si no tienes la carpeta
-# STATICFILES_DIRS = [BASE_DIR / 'empleado' / 'static']
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# MEDIA FILES
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_URL='/media/'
+#MEDIA_ROOT=BASE_DIR.child('media')
+MEDIA_ROOT=BASE_DIR / 'media'
