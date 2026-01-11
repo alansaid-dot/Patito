@@ -5,10 +5,14 @@ from pathlib import Path
 import os
 import dj_database_url
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
 SECRET_KEY = os.environ.get('SECRET_KEY')
+
+if not SECRET_KEY:
+    raise Exception("SECRET_KEY no está definida en las variables de entorno")
+
 DEBUG = False
 ALLOWED_HOSTS = [
     'mi-sitio-web-de-render.onrender.com'
