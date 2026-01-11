@@ -11,10 +11,15 @@ from django.views.generic import(
 from django.db.models import Q
 from .models import Empleado
 from .forms import EmpleadoForm
+import os
+from django.http import HttpResponse
+
+def debug_view(request):
+    return HttpResponse(str(os.listdir('/opt/render/project/src/DJDevAlan')))
 
 class InicioView(TemplateView):
     """Vista de carga página de inicio"""
-    template_name='prueba.html'
+    template_name='inicio.html'
     
 class ListaEmpleadosAdmin(ListView):
     template_name='persona/lista_empleados.html'
