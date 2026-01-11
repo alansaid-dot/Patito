@@ -14,9 +14,10 @@ ALLOWED_HOSTS = ['mi-sitio-web-de-render.onrender.com']
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3'
+        default=os.environ.get('DATABASE_URL')
     )
 }
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
