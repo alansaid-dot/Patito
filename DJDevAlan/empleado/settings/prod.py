@@ -65,6 +65,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'empleado.wsgi.application'
 
 # DATABASE

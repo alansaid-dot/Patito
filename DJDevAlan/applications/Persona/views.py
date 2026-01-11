@@ -14,7 +14,7 @@ from .forms import EmpleadoForm
 
 class InicioView(TemplateView):
     """Vista de carga página de inicio"""
-    template_name='inicio.html'
+    template_name='prueba.html'
     
 class ListaEmpleadosAdmin(ListView):
     template_name='persona/lista_empleados.html'
