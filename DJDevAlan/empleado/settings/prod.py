@@ -8,9 +8,11 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY
-SECRET_KEY = os.environ.get('SECRET_KEY', 'clave-temporal')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
-ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'mi-sitio-web-de-render.onrender.com'
+]
 
 # APPLICATION DEFINITION
 INSTALLED_APPS = [
