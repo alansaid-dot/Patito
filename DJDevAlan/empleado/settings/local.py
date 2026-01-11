@@ -1,25 +1,25 @@
+import os
 from .base import *
-from pathlib import Path
 import dj_database_url
 
-
-# SECURITY WARNING: don't run with debug turned on in production!
-BASE_DIR=Path(__file__).resolve().parent.parent
 DEBUG = False
+ALLOWED_HOSTS = ['.onrender.com']
 
-ALLOWED_HOSTS = ['mi-sitio-web-de-render.onrender.com']
-
-#Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-database_url = os.environ.get('DATABASE_URL')
-
-if not database_url:
-    raise ValueError("DATABASE_URL no está configurada")
-
-DATABASES = {
-    'default': dj_database_url.parse(database_url, conn_max_age=600, ssl_require=True)
-}
+# DATABASE - Para Render
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)
+    }
+else:
+    # Solo falla durante el build, no durante runtime
+    import sys
+    if 'collectstatic' not in ' '.join(sys.argv) and 'migrate' not in ' '.join(sys.argv):
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.dummy',
+            }
+        }
 
 
 STATIC_URL = '/static/'
