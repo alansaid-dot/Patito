@@ -7,7 +7,7 @@ import dj_database_url
 BASE_DIR=Path(__file__).resolve().parent.parent
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['mi-sitio-web-de-render.onrender.com']
 
 #Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
