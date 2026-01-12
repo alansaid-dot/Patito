@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Registrar Nueva Habilidad
+{% endblock title %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <div class="cell">
+            <h1>Registrar Nueva Habilidad</h1>
+        </div>
+        
+        <div class="cell">
+            <div class="callout">
+                <p>Ingrese el nombre de la nueva habilidad. Asegúrese de que no exista previamente en el sistema.</p>
+            </div>
+        </div>
+        
+        <div class="cell">
+            <form method="POST">{% csrf_token %}
+                <div class="grid-x grid-margin-x">
+                    <div class="medium-6 cell">
+                        <label>
+                            Nombre de la Habilidad
+                            {{ form.habilidad }}
+                        </label>
+                        {% if form.habilidad.errors %}
+                            <div class="callout alert">
+                                {{ form.habilidad.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="cell">
+                        <button type="submit" class="button success">
+                            <i class="fi-save"></i> Guardar Habilidad
+                        </button>
+                        
+                        <a href="{% url 'persona_app:lista_habilidades' %}" class="button secondary">
+                            <i class="fi-list"></i> Ver Todas las Habilidades
+                        </a>
+                        
+                        <a href="{% url 'persona_app:inicio' %}" class="button warning">
+                            <i class="fi-home"></i> Ir al Inicio
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

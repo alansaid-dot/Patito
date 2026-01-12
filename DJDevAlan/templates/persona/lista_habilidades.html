@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de Habilidades
+{% endblock title %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <div class="cell">
+            <h1>Lista de Habilidades</h1>
+        </div>
+        
+        <div class="cell">
+            <div class="button-group">
+                <a href="{% url 'persona_app:add_habilidad' %}" class="button success">
+                    <i class="fi-plus"></i> Agregar Nueva Habilidad
+                </a>
+                <a href="{% url 'persona_app:inicio' %}" class="button warning">
+                    <i class="fi-home"></i> Ir al Inicio
+                </a>
+            </div>
+        </div>
+        
+        <div class="cell">
+            <div class="callout">
+                <h5>Total de Habilidades: {{ habilidades.count }}</h5>
+            </div>
+        </div>
+        
+        <div class="cell">
+            <table class="hover">
+                <thead>
+                    <tr>
+                        <th width="50">ID</th>
+                        <th>Nombre de la Habilidad</th>
+                        <th width="200">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for habilidad in habilidades %}
+                    <tr>
+                        <td>{{ habilidad.id }}</td>
+                        <td>{{ habilidad.habilidad }}</td>
+                        <td>
+                            <a href="{% url 'persona_app:update_habilidad' habilidad.id %}" 
+                               class="button tiny warning">
+                                <i class="fi-pencil"></i> Editar
+                            </a>
+                            <a href="{% url 'persona_app:delete_habilidad' habilidad.id %}" 
+                               class="button tiny alert">
+                                <i class="fi-trash"></i> Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="text-center">
+                            <div class="callout secondary">
+                                No hay habilidades registradas aún.
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Paginación -->
+        {% if is_paginated %}
+        <div class="cell">
+            <nav aria-label="Pagination">
+                <ul class="pagination text-center">
+                    {% if page_obj.has_previous %}
+                    <li class="pagination-previous">
+                        <a href="?page={{ page_obj.previous_page_number }}">Atrás</a>
+                    </li>
+                    {% endif %}
+                    
+                    {% for pagina in paginator.page_range %}
+                    <li class="{% if page_obj.number == pagina %}current{% endif %}">
+                        <a href="?page={{ pagina }}">{{ pagina }}</a>
+                    </li>
+                    {% endfor %}
+                    
+                    {% if page_obj.has_next %}
+                    <li class="pagination-next">
+                        <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Editar Habilidad
+{% endblock title %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <div class="cell">
+            <h1>Editar Habilidad</h1>
+        </div>
+        
+        <div class="cell">
+            <form method="POST">{% csrf_token %}
+                <div class="grid-x grid-margin-x">
+                    <div class="medium-6 cell">
+                        <label>
+                            Nombre de la Habilidad
+                            {{ form.habilidad }}
+                        </label>
+                    </div>
+                    
+                    <div class="cell">
+                        <button type="submit" class="button success">
+                            <i class="fi-save"></i> Guardar Cambios
+                        </button>
+                        
+                        <a href="{% url 'persona_app:lista_habilidades' %}" class="button secondary">
+                            <i class="fi-x"></i> Cancelar
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

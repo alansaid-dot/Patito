@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Eliminar Habilidad
+{% endblock title %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <div class="cell">
+            <h1>Eliminar Habilidad</h1>
+        </div>
+        
+        <div class="cell">
+            <div class="callout alert">
+                <h5>¿Está seguro que desea eliminar esta habilidad?</h5>
+                <p><strong>{{ object.habilidad }}</strong></p>
+                <p>Esta acción no se puede deshacer.</p>
+            </div>
+        </div>
+        
+        <div class="cell">
+            <form method="POST">{% csrf_token %}
+                <button type="submit" class="button alert">
+                    <i class="fi-trash"></i> Confirmar Eliminación
+                </button>
+                
+                <a href="{% url 'persona_app:lista_habilidades' %}" class="button secondary">
+                    <i class="fi-x"></i> Cancelar
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

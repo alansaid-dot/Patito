@@ -35,5 +35,9 @@ urlpatterns = [
         views.ListaEmpleadosAdmin.as_view(), 
         name='empleados_admin'
     ),
+    path('habilidades/', views.ListaHabilidadesView.as_view(), name='lista_habilidades'),
+    path('habilidad/add/', views.HabilidadCreateView.as_view(), name='add_habilidad'),
+    path('habilidad/update/<pk>/', views.HabilidadUpdateView.as_view(), name='update_habilidad'),
+    path('habilidad/delete/<pk>/', views.HabilidadDeleteView.as_view(), name='delete_habilidad'),
     
 ]

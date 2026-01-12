@@ -9,8 +9,8 @@ from django.views.generic import(
     DeleteView
 )
 from django.db.models import Q
-from .models import Empleado
-from .forms import EmpleadoForm
+from .models import Empleado, Habilidades
+from .forms import EmpleadoForm, HabilidadForm
 import os
 from django.http import HttpResponse
 
@@ -130,3 +130,35 @@ class EmpleadoDeleteView(DeleteView):
     model=Empleado
     template_name='persona/delete.html'
     success_url=reverse_lazy('persona_app:empleados_admin')
+    
+class HabilidadCreateView(CreateView):
+    """Vista para crear nuevas habilidades"""
+    template_name = 'persona/add_habilidad.html'
+    form_class = HabilidadForm
+    success_url = reverse_lazy('persona_app:lista_habilidades')
+    
+    def form_valid(self, form):
+        # Opcional: puedes añadir lógica adicional aquí
+        return super(HabilidadCreateView, self).form_valid(form)
+
+class ListaHabilidadesView(ListView):
+    """Vista para listar todas las habilidades"""
+    template_name = 'persona/lista_habilidades.html'
+    model = Habilidades
+    context_object_name = 'habilidades'
+    ordering = 'habilidad'
+    paginate_by = 10
+
+class HabilidadUpdateView(UpdateView):
+    """Vista para actualizar habilidades"""
+    template_name = 'persona/update_habilidad.html'
+    model = Habilidades
+    fields = ['habilidad']
+    success_url = reverse_lazy('persona_app:lista_habilidades')
+
+class HabilidadDeleteView(DeleteView):
+    """Vista para eliminar habilidades"""
+    model = Habilidades
+    template_name = 'persona/delete_habilidad.html'
+    success_url = reverse_lazy('persona_app:lista_habilidades')
+    
